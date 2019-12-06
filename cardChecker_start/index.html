@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CardChecker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="card" id="app">
+
+        <!-- Здесь будет выводиться ЛОГОТИП БАНКА -->
+        <div class="bank" >
+            <img src="img/banks/sberbank.png">
+        </div>
+
+        <!-- Поле для ввода НОМЕРА КАРТЫ -->
+        <div class="number-container">
+            <input type="text" placeholder="Номер карты" v-model="In">
+            <div class="status"></div>
+        </div>
+
+        <!-- Поле для ввода ИМЕНИ ДЕРЖАТЕЛЯ -->
+        <div class="name-container">
+            <input type="text" placeholder="Имя держателя">
+            <div class="status"></div>
+        </div>
+
+        <!-- Логотип ПЛАТЕЖНОЙ СИСТЕМЫ -->
+        <div class="pay-system">
+            <img :src="Addr">
+        </div>
+
+    </div>
+
+</body>
+<script>
+    let Vm = new Vue({
+        el: '#app',
+        data:{
+          Address: '',
+          In: '',
+        },
+        computed: {
+          Addr: function(){
+            switch(parseInt(this.In[0])){
+              case 2:
+                return "img/systems/mir.png";
+                break;
+              case 3:
+                return "img/systems/american-exp.png";
+                break;
+              case 4:
+                return "img/systems/visa.png";
+                break;
+              case 5:
+                return "img/systems/mastercard.png";
+                break;
+              case 6:
+                return "img/systems/maestro.png";
+                break;
+            }
+          }
+        }
+    })
+</script>
+</html>
